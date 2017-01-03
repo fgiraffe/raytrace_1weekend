@@ -6,6 +6,8 @@
 *.dSYM
 *.swp
 vec3_tests
+chap01
+*.ppm
 
 # Precompiled Headers
 *.gch
@@ -15,14 +17,9 @@ vec3_tests
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
+.DS_Store
 
 # Compiled Static libraries
-*.lai
-*.la
 *.a
 *.lib
 
