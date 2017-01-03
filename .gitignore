@@ -3,6 +3,9 @@
 *.lo
 *.o
 *.obj
+*.dSYM
+*.swp
+vec3_tests
 
 # Precompiled Headers
 *.gch
