@@ -6,6 +6,9 @@ INCLUDES=vec3.h
 vec3tests : vec3_tests.cpp $(INCLUDES)
 	$(CXX) vec3_tests.cpp $(CXXFLAGS) -o vec3_tests
 
+chap05 : chap05.cpp $(INCLUDES)
+	$(CXX) chap05.cpp $(CXXFLAGS) -o chap05
+
 chap04 : chap04.cpp $(INCLUDES)
 	$(CXX) chap04.cpp $(CXXFLAGS) -o chap04
 
@@ -28,6 +31,11 @@ ch4 : chap04
 	@osascript -e 'quit app "ToyViewer"'
 	@./chap04 > chap4.ppm
 	@open -a ToyViewer chap4.ppm
+
+ch5 : chap05
+	@osascript -e 'quit app "ToyViewer"'
+	@./chap05 > chap5.ppm
+	@open -a ToyViewer chap5.ppm
 
 
 clean :
