@@ -8,8 +8,11 @@ static const int SCREEN_H = 300;
 
 using namespace std;
 
+// functions for converting "world" colors (range 0.0 - 1.0) to
+// PPM colors, int range 0 - MAX_COLOR_VAL
 static const rtnum COLOR_ROUND_MULT = rtnum(MAX_COLOR_VAL) + 0.99;
-static inline int magicRound(rtnum r) {return COLOR_ROUND_MULT * r;}
+static inline int PPM_PixelColor(rtnum r) {return COLOR_ROUND_MULT * r;}
+
 
 static inline void outputPPMPixel(int r, int g, int b) {
 	cout << r << " " << g << " " << b << " ";
@@ -23,15 +26,16 @@ static void outputPPMHeader(int imgWidth, int imgHeight, int maxColor) {
 }
 
 
-
 vec3 color(const ray& r) {
+	// simple function which creates a blue to white gradient background
 	const vec3 WHITE_COLOR(1.0, 1.0, 1.0);
 	const vec3 NICE_BLUE_COLOR(0.0, 0.2, 0.9);
 
 	vec3 unit_dir = unit_vector(r.direction());
 	rtnum t = 0.5 * (unit_dir.y() + 1.0);
 
-	return (1.0 - t) * WHITE_COLOR + t * NICE_BLUE_COLOR;
+// 	blended_value = (1-t)* start_value + t* end_value,
+	return (1.0 - t) * WHITE_COLOR + (t * NICE_BLUE_COLOR);
 }
 
 int main() {
@@ -55,9 +59,9 @@ int main() {
 
 			ray r(origin, ll_corner + u * horizontal + v * vertical);
 			vec3 col = color(r);
-			int ir = magicRound(col[0]);
-			int ig = magicRound(col[1]);
-			int ib = magicRound(col[2]);
+			int ir = PPM_PixelColor(col[0]);
+			int ig = PPM_PixelColor(col[1]);
+			int ib = PPM_PixelColor(col[2]);
 
 			outputPPMPixel(ir, ig, ib);
 		}
