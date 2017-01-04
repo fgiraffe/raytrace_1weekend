@@ -27,6 +27,7 @@ static void outputPPMHeader(int imgWidth, int imgHeight, int maxColor) {
 
 
 bool hit_sphere(const vec3 &center, rtnum radius, const ray& r){
+	// ek be prepared to explain at lunch Thursday!
 	vec3 oc = r.origin() - center;
 	rtnum a = dot(r.direction(), r.direction());
 	rtnum b = 2.0 * dot(oc, r.direction());
