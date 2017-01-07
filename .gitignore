@@ -14,6 +14,7 @@ chap05
 chap05plus
 chap06
 *.ppm
+ekcastray.cpp
 
 # Precompiled Headers
 *.gch
