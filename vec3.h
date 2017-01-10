@@ -134,9 +134,10 @@ inline vec3& vec3::operator/=(const vec3 &v) {
 }
 
 inline vec3& vec3::operator/=(const rtnum t) {
-	this->e[0] /= t;
-	this->e[1] /= t;
-	this->e[2] /= t;
+	rtnum k = 1.0/t;
+	this->e[0] *= k;
+	this->e[1] *= k;
+	this->e[2] *= k;
 	return *this;
 }
 
