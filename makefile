@@ -3,6 +3,13 @@ CXX=clang
 CXXFLAGS=-I -std=c++14 -stdlib=libc++ -lstdc++
 INCLUDES=vec3.h sphere.h hitable.h hitable_list.h camera.h
 
+.PHONY: clean all
+
+ch7 : chap07
+	@osascript -e 'quit app "ToyViewer"'
+	@./chap07 > chap7.ppm
+	@open -a ToyViewer chap7.ppm
+
 vec3tests : vec3_tests.cpp $(INCLUDES)
 	$(CXX) vec3_tests.cpp $(CXXFLAGS) -o vec3_tests
 
@@ -53,10 +60,9 @@ ch6 : chap06
 	@./chap06 > chap6.ppm
 	@open -a ToyViewer chap6.ppm
 
-ch7 : chap07
+all : ch1 ch2 ch4 ch5 ch5plus ch6 ch7
 	@osascript -e 'quit app "ToyViewer"'
-	@./chap07 > chap7.ppm
-	@open -a ToyViewer chap7.ppm
+	open -a ToyViewer chap7.ppm chap6.ppm chap5plus.ppm chap5.ppm chap4.ppm chap2.ppm chap1.ppm
 
 clean :
 	@osascript -e 'quit app "ToyViewer"'

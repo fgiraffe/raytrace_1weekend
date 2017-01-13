@@ -2,7 +2,7 @@
 #include "ray.h"
 
 static const int MAX_COLOR_VAL = 255;
-static const int SCREEN_W = 800;
+static const int SCREEN_W = 200;
 static const int SCREEN_H = SCREEN_W / 2;
 
 
@@ -27,7 +27,6 @@ static void outputPPMHeader(int imgWidth, int imgHeight, int maxColor) {
 
 
 rtnum hit_sphere(const vec3 &center, rtnum radius, const ray& r){
-	// ek be prepared to explain at lunch Thursday!
 	vec3 oc = r.origin() - center;
 	rtnum a = dot(r.direction(), r.direction());
 	rtnum b = 2.0 * dot(oc, r.direction());

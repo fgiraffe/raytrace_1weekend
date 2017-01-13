@@ -15,7 +15,7 @@ class ray
 		vec3 origin() const {return _A;}
 		vec3 direction() const {return _B;}
 
-		vec3 point_at_parameter(rtnum t) const {return _B + t * _B;}
+		vec3 point_at_parameter(rtnum t) const {return _A + t * _B;}
 	
 	private:
 		vec3 _A;
